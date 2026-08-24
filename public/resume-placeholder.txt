@@ -1,0 +1,9 @@
+RESUME PDF PLACEHOLDER
+======================
+
+Replace this file with your actual resume PDF.
+
+Rename/replace this file as:  public/resume.pdf
+
+The "View Resume" button in the Hero section links to this file.
+It will be served from: https://arunachalamvenkatachalapathy-dev.github.io/arunachalam-portfolio/resume.pdf
