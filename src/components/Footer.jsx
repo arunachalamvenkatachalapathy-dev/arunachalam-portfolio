@@ -5,44 +5,45 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-surface-border dark:border-dark-border py-8" aria-label="Footer">
-      <div className="section-wrapper flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className="border-t border-surface-border py-10">
+      <div className="section-wrapper max-w-6xl flex flex-col md:flex-row items-center justify-between gap-6">
+        
         {/* Left */}
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-md bg-teal-700 flex items-center justify-center text-white font-bold text-[10px]" aria-hidden="true">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center text-accent font-display font-bold text-xs">
             AV
           </div>
-          <p className="text-sm text-charcoal-muted dark:text-gray-500">
-            © {year} Arunachalam V · Built with React &amp; Vite
+          <p className="text-sm font-medium text-text-muted">
+            © {year} Arunachalam V. All rights reserved.
           </p>
         </div>
 
-        {/* Right: social icons */}
-        <div className="flex items-center gap-4">
+        {/* Right */}
+        <div className="flex items-center gap-6">
           <a
             href="mailto:arunachalamv.env@gmail.com"
-            className="text-charcoal-muted dark:text-gray-500 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-150 focus:outline-none"
+            className="text-text-muted hover:text-accent hover:-translate-y-0.5 transition-all"
             aria-label="Email"
           >
-            <Mail size={16} aria-hidden="true" />
+            <Mail size={18} />
           </a>
           <a
-            href="https://linkedin.com/in/arunachalamenv"
+            href="https://www.linkedin.com/in/arunachalamvenv/"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-charcoal-muted dark:text-gray-500 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-150 focus:outline-none"
+            className="text-text-muted hover:text-accent hover:-translate-y-0.5 transition-all"
             aria-label="LinkedIn"
           >
-            <LinkedInIcon size={16} />
+            <LinkedInIcon size={18} />
           </a>
           <a
             href="https://github.com/arunachalamvenkatachalapathy-dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-charcoal-muted dark:text-gray-500 hover:text-teal-700 dark:hover:text-teal-400 transition-colors duration-150 focus:outline-none"
+            className="text-text-muted hover:text-accent hover:-translate-y-0.5 transition-all"
             aria-label="GitHub"
           >
-            <GitHubIcon size={16} />
+            <GitHubIcon size={18} />
           </a>
         </div>
       </div>

@@ -1,3 +1,6 @@
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+
 const experiences = [
   {
     role: 'ESG Technical Intern',
@@ -7,10 +10,9 @@ const experiences = [
     bullets: [
       'Contributed to AI-enabled BRSR reporting workflows and Scope 1, 2, and selected Scope 3 GHG inventories, aligned with GHG Protocol and ISO 14064 principles.',
       'Designed a value chain data collection template capturing supplier GHG emissions, water usage, waste, employee count, safety incidents, and governance indicators for BRSR Principle 6 compliance.',
-      'Created a 5-tab BRSR Core reporting template calculating GHG emissions, energy consumption (GJ), water withdrawal/discharge, waste metrics, safety indicators (LTIFR), and gender diversity percentages per SEBI mandatory disclosure requirements.',
+      'Created a 5-tab BRSR Core reporting template calculating GHG emissions, energy consumption, water withdrawal/discharge, waste metrics, and safety indicators per SEBI mandatory disclosure requirements.',
       'Compiled an emission factor reference database from CEA CO₂ Baseline 2024, India GHG Program, IPCC 2006, and DEFRA 2023.',
     ],
-    tags: ['BRSR', 'GHG Protocol', 'ISO 14064', 'Scope 1–3', 'AI-Enabled Reporting'],
   },
   {
     role: 'Environmental Engineering Intern',
@@ -23,73 +25,77 @@ const experiences = [
       'Developed recommendations resulting in ~7% improvement in energy efficiency, directly relevant to Scope 2 emissions reduction.',
       'Gained exposure to public-sector infrastructure performance monitoring and compliance practices.',
     ],
-    tags: ['Energy Audit', 'WTP Operations', 'Scope 2', 'Process Optimization'],
   },
 ]
 
 export default function Experience() {
+  const containerRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start center', 'end center'],
+  })
+
+  // Height of the glowing timeline line based on scroll
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+
   return (
-    <section id="experience" className="section-pad border-t border-surface-border dark:border-dark-border" aria-label="Experience">
-      <div className="section-wrapper">
-        <p className="section-label reveal">Experience</p>
-        <h2 className="section-heading reveal">Work History</h2>
+    <section id="experience" className="py-32 relative" ref={containerRef}>
+      <div className="section-wrapper max-w-4xl">
+        <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-20 text-center">
+          Professional <span className="text-gradient-accent">Experience.</span>
+        </h2>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical line */}
-          <div
-            className="absolute left-[5px] top-4 bottom-0 w-px bg-surface-border dark:bg-dark-border"
-            aria-hidden="true"
-          />
+        <div className="relative pl-8 md:pl-0">
+          
+          {/* Animated Timeline Line */}
+          <div className="absolute left-[7px] md:left-1/2 top-0 bottom-0 w-[2px] bg-surface-border md:-translate-x-1/2">
+            <motion.div
+              style={{ height: lineHeight }}
+              className="w-full bg-gradient-to-b from-accent to-emerald-300 shadow-[0_0_15px_rgba(0,220,130,0.5)]"
+            />
+          </div>
 
-          <div className="space-y-12 pl-8">
-            {experiences.map((exp, i) => (
-              <div key={i} className="relative reveal">
-                {/* Timeline dot */}
-                <div
-                  className="timeline-item absolute -left-8"
-                  aria-hidden="true"
-                />
+          <div className="space-y-24">
+            {experiences.map((exp, i) => {
+              const isEven = i % 2 === 0
+              return (
+                <div key={i} className={`relative flex md:justify-between items-center w-full ${isEven ? 'md:flex-row-reverse' : ''}`}>
+                  
+                  {/* Timeline Dot */}
+                  <div className="absolute left-[-29px] md:left-1/2 w-4 h-4 rounded-full bg-background border-2 border-accent md:-translate-x-1/2 z-10 shadow-[0_0_10px_rgba(0,220,130,0.4)]" />
 
-                {/* Card */}
-                <div className="card">
-                  {/* Header */}
-                  <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
-                    <div>
-                      <h3 className="text-base font-semibold text-charcoal dark:text-white mb-0.5">
-                        {exp.role}
-                      </h3>
-                      <p className="text-sm text-teal-700 dark:text-teal-400 font-medium">
-                        {exp.company}
-                        <span className="text-charcoal-muted dark:text-gray-500 font-normal">
-                          {' '}· {exp.location}
-                        </span>
-                      </p>
+                  {/* Empty space for alternating layout */}
+                  <div className="hidden md:block md:w-5/12" />
+
+                  {/* Card */}
+                  <motion.div
+                    initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+                    className="w-full md:w-5/12 glass-card p-6 md:p-8"
+                  >
+                    <div className="mb-6">
+                      <span className="inline-block px-3 py-1 rounded-full bg-surface-border text-xs font-semibold text-text-secondary mb-4">
+                        {exp.duration}
+                      </span>
+                      <h3 className="text-xl font-display font-semibold text-white mb-1">{exp.role}</h3>
+                      <p className="text-sm font-medium text-accent">{exp.company} <span className="text-text-muted">· {exp.location}</span></p>
                     </div>
-                    <span className="flex-shrink-0 text-xs font-medium px-2.5 py-1 rounded-full bg-surface-card dark:bg-dark-bg border border-surface-border dark:border-dark-border text-charcoal-muted dark:text-gray-400">
-                      {exp.duration}
-                    </span>
-                  </div>
 
-                  {/* Bullets */}
-                  <ul className="space-y-2.5 mb-5" role="list">
-                    {exp.bullets.map((b, j) => (
-                      <li key={j} className="flex gap-2.5 text-sm text-charcoal-soft dark:text-gray-300 leading-relaxed">
-                        <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-teal-700/50 dark:bg-teal-500/50" aria-hidden="true" />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
+                    <ul className="space-y-3">
+                      {exp.bullets.map((b, j) => (
+                        <li key={j} className="flex gap-3 text-sm text-text-secondary leading-relaxed">
+                          <span className="mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-accent/50" />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tags.map((tag) => (
-                      <span key={tag} className="skill-tag">{tag}</span>
-                    ))}
-                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { GraduationCap } from 'lucide-react'
 
 const education = [
@@ -7,7 +8,7 @@ const education = [
     location: 'Karaikudi, Tamil Nadu',
     year: '2026 (Expected)',
     cgpa: '9.0 / 10',
-    highlight: 'Dissertation: Environmental Risk & ESG Analysis of NLCIL — AICTE Conference Presenter',
+    highlight: 'Dissertation: Environmental Risk & ESG Analysis of NLCIL',
   },
   {
     degree: 'B.E. Civil Engineering',
@@ -21,43 +22,46 @@ const education = [
 
 export default function Education() {
   return (
-    <section id="education" className="section-pad border-t border-surface-border dark:border-dark-border" aria-label="Education">
-      <div className="section-wrapper">
-        <p className="section-label reveal">Education</p>
-        <h2 className="section-heading reveal">Academic Background</h2>
+    <section id="education" className="py-24 relative">
+      <div className="section-wrapper max-w-5xl">
+        <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-16 text-center">
+          Academic <span className="text-gradient-accent">Background.</span>
+        </h2>
 
-        <div className="grid md:grid-cols-2 gap-5 reveal-stagger">
-          {education.map((edu) => (
-            <div key={edu.degree} className="card flex gap-4 items-start">
-              {/* Icon */}
-              <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-teal-700/10 dark:bg-teal-500/15 flex items-center justify-center mt-0.5">
-                <GraduationCap size={20} className="text-teal-700 dark:text-teal-400" aria-hidden="true" />
+        <div className="grid md:grid-cols-2 gap-6">
+          {education.map((edu, i) => (
+            <motion.div
+              key={edu.degree}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="glass-card p-8 flex flex-col h-full"
+            >
+              <div className="w-12 h-12 rounded-xl bg-surface-border flex items-center justify-center mb-6">
+                <GraduationCap className="text-accent" size={24} />
               </div>
 
-              <div>
-                <h3 className="font-semibold text-charcoal dark:text-white text-sm mb-0.5 leading-snug">
-                  {edu.degree}
-                </h3>
-                <p className="text-sm text-teal-700 dark:text-teal-400 font-medium mb-0.5">
-                  {edu.institution}
-                </p>
-                <p className="text-xs text-charcoal-muted dark:text-gray-500 mb-3">
-                  {edu.location} · {edu.year}
-                </p>
+              <h3 className="text-xl font-display font-semibold text-white mb-2">{edu.degree}</h3>
+              <p className="text-sm font-medium text-accent mb-4">{edu.institution}</p>
+              
+              <div className="flex flex-wrap items-center gap-4 text-xs text-text-muted mb-6">
+                <span>{edu.location}</span>
+                <span className="w-1 h-1 rounded-full bg-surface-border" />
+                <span>{edu.year}</span>
+              </div>
 
-                {/* CGPA badge */}
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-teal-700/10 dark:bg-teal-500/15 text-teal-800 dark:text-teal-300">
-                    CGPA: {edu.cgpa}
-                  </span>
-                  {edu.highlight && (
-                    <p className="text-xs text-charcoal-muted dark:text-gray-500 leading-relaxed">
-                      {edu.highlight}
-                    </p>
-                  )}
+              <div className="mt-auto">
+                <div className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-surface-hover border border-surface-border mb-4">
+                  <span className="text-xs font-bold uppercase tracking-widest text-text-secondary">CGPA: <span className="text-white">{edu.cgpa}</span></span>
                 </div>
+                {edu.highlight && (
+                  <p className="text-sm text-text-secondary leading-relaxed p-4 rounded-xl bg-accent/5 border border-accent/10">
+                    <strong className="text-accent">Highlight:</strong> {edu.highlight}
+                  </p>
+                )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

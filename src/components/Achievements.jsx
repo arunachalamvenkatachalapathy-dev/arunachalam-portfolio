@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Award, BadgeCheck } from 'lucide-react'
 
 const achievements = [
@@ -11,82 +12,85 @@ const achievements = [
 ]
 
 const certifications = [
-  {
-    name: 'Sustainable Finance',
-    issuer: 'UN CC:e-Learn',
-  },
-  {
-    name: 'CSRD Fundamentals',
-    issuer: 'Online Certification',
-  },
-  {
-    name: 'GIS for Climate Change',
-    issuer: 'Esri',
-  },
+  { name: 'Sustainable Finance', issuer: 'UN CC:e-Learn' },
+  { name: 'CSRD Fundamentals', issuer: 'Online Certification' },
+  { name: 'GIS for Climate Change', issuer: 'Esri' },
 ]
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="section-pad border-t border-surface-border dark:border-dark-border" aria-label="Achievements and certifications">
-      <div className="section-wrapper">
-        <p className="section-label reveal">Recognition</p>
-        <h2 className="section-heading reveal">Achievements & Certifications</h2>
-
-        <div className="grid md:grid-cols-2 gap-8 reveal">
+    <section id="achievements" className="py-24 relative">
+      <div className="section-wrapper max-w-5xl">
+        
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          
           {/* Key Achievement */}
-          <div>
-            <h3 className="text-xs font-semibold tracking-widest uppercase text-charcoal-muted dark:text-gray-500 mb-4">
-              Key Achievement
-            </h3>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-3xl font-display font-bold text-white mb-8">
+              Key <span className="text-gradient-accent">Recognition.</span>
+            </h2>
             {achievements.map((a) => {
               const Icon = a.icon
               return (
-                <div key={a.title} className="card border-l-4 border-teal-700 dark:border-teal-500 !rounded-l-none">
-                  <div className="flex gap-3 items-start mb-3">
-                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-teal-700/10 dark:bg-teal-500/15 flex items-center justify-center">
-                      <Icon size={18} className="text-teal-700 dark:text-teal-400" aria-hidden="true" />
+                <div key={a.title} className="glass-card p-8 border-l-4 border-l-accent !rounded-l-none relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-6 opacity-5 pointer-events-none">
+                    <Icon size={120} />
+                  </div>
+                  <div className="flex gap-4 items-start mb-6 relative z-10">
+                    <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
+                      <Icon className="text-accent" size={24} />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-charcoal dark:text-white text-sm leading-snug mb-0.5">
-                        {a.title}
-                      </h4>
-                      <p className="text-xs text-teal-700 dark:text-teal-400 font-medium">{a.org}</p>
+                      <h3 className="text-xl font-display font-semibold text-white mb-1">{a.title}</h3>
+                      <p className="text-sm font-medium text-accent">{a.org}</p>
                     </div>
                   </div>
-                  <p className="text-xs text-charcoal-muted dark:text-gray-500 mb-2 leading-relaxed">{a.body}</p>
-                  <p className="text-sm text-charcoal-soft dark:text-gray-300 leading-relaxed font-medium">
+                  <p className="text-sm text-text-secondary mb-4 leading-relaxed relative z-10">{a.body}</p>
+                  <p className="text-sm text-white font-medium leading-relaxed bg-surface-hover p-4 rounded-xl border border-surface-border relative z-10">
                     {a.detail}
                   </p>
                 </div>
               )
             })}
-          </div>
+          </motion.div>
 
           {/* Certifications */}
-          <div>
-            <h3 className="text-xs font-semibold tracking-widest uppercase text-charcoal-muted dark:text-gray-500 mb-4">
-              Certifications
-            </h3>
-            <div className="space-y-3">
-              {certifications.map((cert) => (
-                <div
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h2 className="text-3xl font-display font-bold text-white mb-8">
+              Certifications.
+            </h2>
+            <div className="flex flex-col gap-4">
+              {certifications.map((cert, i) => (
+                <motion.div
                   key={cert.name}
-                  className="flex items-center gap-3 p-4 rounded-xl border border-surface-border dark:border-dark-border bg-surface-card dark:bg-dark-card
-                    hover:border-teal-700/30 dark:hover:border-teal-500/30 transition-colors duration-200"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + (i * 0.1) }}
+                  className="flex items-center gap-4 p-5 glass-card group"
                 >
-                  <BadgeCheck
-                    size={18}
-                    className="text-teal-700 dark:text-teal-400 flex-shrink-0"
-                    aria-hidden="true"
-                  />
-                  <div>
-                    <p className="text-sm font-medium text-charcoal dark:text-white">{cert.name}</p>
-                    <p className="text-xs text-charcoal-muted dark:text-gray-500">{cert.issuer}</p>
+                  <div className="w-10 h-10 rounded-full bg-surface-border flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                    <BadgeCheck className="text-accent" size={20} />
                   </div>
-                </div>
+                  <div>
+                    <h4 className="text-base font-medium text-white">{cert.name}</h4>
+                    <p className="text-sm text-text-muted">{cert.issuer}</p>
+                  </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

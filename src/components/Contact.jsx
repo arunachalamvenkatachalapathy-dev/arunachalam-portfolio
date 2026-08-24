@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { Mail, Phone, Send } from 'lucide-react'
 import { LinkedInIcon, GitHubIcon } from './Icons'
 
@@ -17,8 +18,8 @@ const contactLinks = [
   {
     icon: LinkedInIcon,
     label: 'LinkedIn',
-    value: 'linkedin.com/in/arunachalamenv',
-    href: 'https://linkedin.com/in/arunachalamenv',
+    value: 'linkedin.com/in/arunachalamvenv',
+    href: 'https://www.linkedin.com/in/arunachalamvenv/',
     external: true,
   },
   {
@@ -32,62 +33,67 @@ const contactLinks = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="section-pad border-t border-surface-border dark:border-dark-border" aria-label="Contact">
-      <div className="section-wrapper">
-        <p className="section-label reveal">Contact</p>
-        <h2 className="section-heading reveal">Get In Touch</h2>
-
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+    <section id="contact" className="py-32 relative">
+      <div className="section-wrapper max-w-5xl">
+        
+        <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Left: message */}
-          <div className="reveal">
-            <p className="text-charcoal-soft dark:text-gray-300 text-base leading-[1.8] mb-6">
-              I am actively looking for ESG, sustainability reporting, and environmental data roles. Whether you have an opportunity, want to discuss a project, or just want to connect — I would love to hear from you.
-            </p>
-            <p className="text-charcoal-soft dark:text-gray-300 text-base leading-[1.8]">
-              Reach out via email or connect on LinkedIn — I typically respond within 24 hours.
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
+              Let's <span className="text-gradient-accent">Connect.</span>
+            </h2>
+            <p className="text-text-secondary text-lg leading-relaxed mb-8">
+              I am actively looking for ESG, sustainability reporting, and environmental data roles. Whether you have an opportunity or just want to discuss a project — I'd love to hear from you.
             </p>
 
-            {/* Availability indicator */}
-            <div className="mt-6 inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-teal-700/10 dark:bg-teal-500/15 border border-teal-700/20 dark:border-teal-500/20">
-              <span className="w-2 h-2 rounded-full bg-teal-600 dark:bg-teal-400 animate-pulse" aria-hidden="true" />
-              <span className="text-sm font-medium text-teal-800 dark:text-teal-300">
-                Open to opportunities
+            <div className="inline-flex items-center gap-3 px-5 py-3 rounded-xl glass-card border-accent/20">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+              </span>
+              <span className="text-sm font-semibold text-white tracking-wide">
+                Currently open for roles
               </span>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right: contact links */}
-          <div className="space-y-3 reveal-stagger">
-            {contactLinks.map(({ icon: Icon, label, value, href, external }) => (
-              <a
-                key={label}
-                href={href}
-                target={external ? '_blank' : undefined}
-                rel={external ? 'noopener noreferrer' : undefined}
-                className="flex items-center gap-4 p-4 rounded-xl
-                  border border-surface-border dark:border-dark-border
-                  bg-surface-card dark:bg-dark-card
-                  hover:border-teal-700/40 dark:hover:border-teal-500/40
-                  hover:bg-surface dark:hover:bg-dark-bg
-                  transition-all duration-200 group
-                  focus:outline-none focus:ring-2 focus:ring-teal-500"
-                aria-label={`${label}: ${value}`}
-              >
-                <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-teal-700/10 dark:bg-teal-500/15 flex items-center justify-center
-                  group-hover:bg-teal-700/20 dark:group-hover:bg-teal-500/25 transition-colors duration-200">
-                  <Icon size={17} className="text-teal-700 dark:text-teal-400" aria-hidden="true" />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs text-charcoal-muted dark:text-gray-500 mb-0.5">{label}</p>
-                  <p className="text-sm font-medium text-charcoal dark:text-gray-200 truncate group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors duration-150">
-                    {value}
-                  </p>
-                </div>
-                <Send size={14} className="ml-auto text-charcoal-muted dark:text-gray-600 group-hover:text-teal-700 dark:group-hover:text-teal-400 transition-colors duration-150 flex-shrink-0" aria-hidden="true" />
-              </a>
-            ))}
+          {/* Right: links */}
+          <div className="flex flex-col gap-4">
+            {contactLinks.map((link, i) => {
+              const Icon = link.icon
+              return (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="flex items-center gap-6 p-6 rounded-2xl glass-card group hover:-translate-y-1"
+                >
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-surface-border flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                    <Icon size={20} className="text-accent" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-xs text-text-muted mb-1 font-medium tracking-wide uppercase">{link.label}</p>
+                    <p className="text-base font-medium text-white truncate group-hover:text-accent transition-colors">
+                      {link.value}
+                    </p>
+                  </div>
+                  <Send size={18} className="text-surface-border group-hover:text-accent transition-colors group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </motion.a>
+              )
+            })}
           </div>
         </div>
+
       </div>
     </section>
   )
