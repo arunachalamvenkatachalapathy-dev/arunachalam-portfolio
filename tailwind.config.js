@@ -9,7 +9,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-        display: ['Inter', '-apple-system', 'sans-serif'], // Keep it all unified in a stark sans-serif
+        display: ['Outfit', '-apple-system', 'sans-serif'],
       },
       colors: {
         // Apple-style Minimalist Palette
