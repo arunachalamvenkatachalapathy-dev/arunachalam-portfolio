@@ -51,7 +51,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-wrap items-center justify-center gap-4 mb-12"
         >
-          <a href={`${BASE}resume.pdf`} target="_blank" rel="noopener noreferrer" className="btn-primary group">
+          <a href="https://drive.google.com/drive/folders/1n600zacanICWFEQ1oX5XYOUyJLMSyvjc?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn-primary group">
             <FileText size={18} />
             <span>View Resume</span>
           </a>
