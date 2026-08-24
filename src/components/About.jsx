@@ -1,84 +1,69 @@
 import { motion } from 'framer-motion'
-import { Leaf, BarChart2, ClipboardList, Database, Factory, Globe } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
 
-const bentoItems = [
-  {
-    title: 'GHG Accounting',
-    desc: 'Scope 1, 2 & 3 inventories aligned to GHG Protocol & ISO 14064.',
-    icon: Leaf,
-    className: 'md:col-span-2 md:row-span-2 bg-gradient-to-br from-surface to-surface-hover',
-  },
-  {
-    title: 'BRSR Reporting',
-    desc: 'SEBI BRSR & BRSR Core disclosures, ESG KPI mapping & gap analysis.',
-    icon: ClipboardList,
-    className: 'md:col-span-1 md:row-span-2',
-  },
-  {
-    title: 'Data-Driven ESG',
-    desc: 'Audit-ready emission models, LCA, and evidence-backed insights.',
-    icon: BarChart2,
-    className: 'md:col-span-1 md:row-span-1',
-  },
-  {
-    title: 'Environmental Eng.',
-    desc: 'Wastewater Treatment, ZLD, and Energy Audits.',
-    icon: Factory,
-    className: 'md:col-span-1 md:row-span-1',
-  },
-  {
-    title: 'Tech Stack',
-    desc: 'Advanced Excel, SQL, Power BI, QGIS, OpenLCA.',
-    icon: Database,
-    className: 'md:col-span-1 md:row-span-1',
-  },
+const skills = [
+  'GHG Accounting (Scope 1, 2 & 3)',
+  'BRSR & ESG Disclosures',
+  'AI Agents for ESG Data Automation',
+  'Life Cycle Assessment (LCA)',
+  'Environmental Data Modeling',
+  'Advanced Excel & SQL',
+  'Python (Data Pipelines)',
+  'Power BI & QGIS'
 ]
 
 export default function About() {
   return (
-    <section id="about" className="py-32 relative">
-      <div className="section-wrapper max-w-6xl">
+    <section id="about" className="py-32 md:py-48 px-6 md:px-12 max-w-7xl mx-auto border-t border-surface-border">
+      <div className="grid md:grid-cols-12 gap-12 md:gap-24">
         
-        <div className="flex flex-col md:flex-row gap-16 mb-20">
-          <div className="flex-1">
-            <h2 className="text-3xl md:text-5xl font-display font-bold text-white mb-6">
-              Bridging the gap between <br className="hidden md:block"/>
-              <span className="text-gradient-accent">Data and Climate Action.</span>
-            </h2>
-          </div>
-          <div className="flex-1 space-y-6 text-text-secondary text-lg leading-relaxed">
-            <p>
-              I am an <strong className="text-white font-semibold">M.E. Environmental Engineer</strong> and ESG professional specializing in corporate GHG accounting and BRSR reporting.
-            </p>
-            <p>
-              My work sits at the intersection of environmental science, data analytics, and sustainability governance. I build audit-ready emission models and translate complex environmental risk data into strategic boardroom insights.
-            </p>
-          </div>
+        {/* Left Col: Header */}
+        <div className="md:col-span-5">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl font-display font-bold tracking-tight text-text-primary"
+          >
+            Bridging Environmental Science and Data Architecture.
+          </motion.h2>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[minmax(180px,auto)]">
-          {bentoItems.map((item, i) => {
-            const Icon = item.icon
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`glass-card p-8 flex flex-col justify-between group ${item.className}`}
-              >
-                <div className="w-12 h-12 rounded-xl bg-surface-border flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-accent/20 transition-all duration-500">
-                  <Icon className="text-accent" size={24} />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-white mb-2 font-display">{item.title}</h3>
-                  <p className="text-sm text-text-muted leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            )
-          })}
+        {/* Right Col: Content */}
+        <div className="md:col-span-7 space-y-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-lg md:text-2xl text-text-secondary leading-relaxed font-medium space-y-6"
+          >
+            <p>
+              I am an M.E. Environmental Engineer specializing in corporate GHG accounting, regulatory compliance, and scalable ESG data systems.
+            </p>
+            <p>
+              Beyond traditional accounting, I build <strong className="text-text-primary">AI-driven automation workflows</strong> to streamline ESG data acquisition, ensuring audit-ready transparency from the supply chain to the boardroom.
+            </p>
+          </motion.div>
+
+          {/* Skills Minimal List */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-text-muted mb-6">Core Competencies</h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8">
+              {skills.map((skill, i) => (
+                <li key={i} className="flex items-start gap-3">
+                  <CheckCircle2 size={20} className="text-accent shrink-0 mt-0.5" />
+                  <span className="text-base font-medium text-text-primary">{skill}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
         </div>
 
       </div>

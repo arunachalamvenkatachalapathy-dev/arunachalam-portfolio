@@ -44,7 +44,7 @@ function App() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden selection:bg-accent selection:text-background text-text-primary">
+    <div className="min-h-screen bg-background overflow-hidden text-text-primary transition-colors duration-300">
       <Nav />
       <main>
         <Hero />
