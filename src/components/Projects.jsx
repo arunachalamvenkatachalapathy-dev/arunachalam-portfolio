@@ -9,10 +9,10 @@ const projects = [
     link: null, // Keep null or add link if available
   },
   {
-    title: 'NetZeroCalc',
+    title: 'NetZeroCalc AI',
     category: 'Carbon Footprint App',
-    description: 'A live tool that maps a Bill of Materials (BOM) to Life Cycle Inventory (LCI) data to calculate product-level carbon footprints.',
-    link: 'https://arunachalamvenkatachalapathy-dev.github.io/e-credits/',
+    description: 'An advanced sustainability intelligence application that automates the mapping of a Bill of Materials (BOM) to Life Cycle Inventory (LCI) data to quantify Scope 3 emissions.',
+    link: 'https://arunachalamvenkatachalapathy-dev.github.io/netzerocalc-ai/',
   },
   {
     title: 'Paravanar Governance Board',
