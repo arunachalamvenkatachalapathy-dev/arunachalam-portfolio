@@ -35,19 +35,19 @@ const projects = [
   },
   {
     icon: Calculator,
-    title: 'NetZeroCalc',
-    subtitle: 'BOM-to-LCI Carbon Footprint Mapper',
+    title: 'NetZeroCalc AI',
+    subtitle: 'Automated BOM-to-LCI Carbon Mapper',
     description:
-      'A tool that maps a Bill of Materials (BOM) to Life Cycle Inventory (LCI) data to calculate product/process-level carbon footprints, supporting emissions and carbon-credit style analysis.',
+      'An advanced sustainability intelligence application that automates the mapping of complex Bill of Materials (BOM) to Life Cycle Inventory (LCI) databases. Engineered to accelerate product-level greenhouse gas (GHG) accounting and carbon reporting workflows.',
     bullets: [
-      'Automated BOM → LCI mapping pipeline',
-      'Product-level GHG emission calculations',
-      'Carbon-credit style analysis and reporting output',
+      'Automates BOM-to-LCI mapping to quantify Scope 3 supply chain emissions',
+      'Enables granular product-level GHG impact assessment and mitigation planning',
+      'Generates scalable, compliance-ready carbon credit analysis and reporting',
     ],
-    tags: ['LCA', 'Carbon Footprint', 'BOM', 'LCI', 'GitHub Pages'],
-    link: 'https://arunachalamvenkatachalapathy-dev.github.io/e-credits/',
-    linkLabel: 'View Live Site',
-    badge: 'Live Tool',
+    tags: ['Carbon Accounting', 'LCA', 'Scope 3', 'BOM Mapping', 'ESG Tech'],
+    link: 'https://arunachalamvenkatachalapathy-dev.github.io/netzerocalc-ai/',
+    linkLabel: 'View Live Application',
+    badge: 'Production Application',
   },
 ]
 
