@@ -43,6 +43,16 @@ export default function Contact() {
           </div>
 
           <div>
+            <span className="block text-sm font-semibold uppercase tracking-widest text-text-muted mb-2">Location</span>
+            <p className="text-xl font-medium text-text-primary">
+              Bargur, Tamil Nadu
+            </p>
+            <p className="text-base text-text-secondary mt-1">
+              Open to Bengaluru / Chennai / remote
+            </p>
+          </div>
+
+          <div>
             <span className="block text-sm font-semibold uppercase tracking-widest text-text-muted mb-4">Social</span>
             <div className="flex gap-6">
               <a href="https://www.linkedin.com/in/arunachalamvenv/" target="_blank" rel="noopener noreferrer" className="text-text-primary hover:text-text-muted transition-colors">

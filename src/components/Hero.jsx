@@ -30,7 +30,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          <a href="https://drive.google.com/drive/folders/1n600zacanICWFEQ1oX5XYOUyJLMSyvjc?usp=drive_link" target="_blank" rel="noopener noreferrer" className="btn-primary">
+          <a href={`${import.meta.env.BASE_URL}resume.pdf`} target="_blank" rel="noopener noreferrer" className="btn-primary">
             View Resume
           </a>
         </motion.div>

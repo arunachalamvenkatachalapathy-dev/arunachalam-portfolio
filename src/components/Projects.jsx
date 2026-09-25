@@ -6,7 +6,7 @@ const projects = [
     title: 'ESG Data Automation Agents',
     category: 'AI & Data Engineering',
     description: 'Built custom AI agents to automate data acquisition and content creation for ESG reporting, drastically reducing manual data collection hours while ensuring audit-ready accuracy.',
-    link: null, // Keep null or add link if available
+    link: 'case-study',
   },
   {
     title: 'NetZeroCalc AI',
@@ -24,7 +24,7 @@ const projects = [
     title: 'Environmental Risk of NLCIL',
     category: 'Dissertation',
     description: 'Applied the SPR framework to assess heavy metal contamination risks. Translated findings into ESG-relevant insights for materiality screening.',
-    link: null,
+    link: 'case-study',
   }
 ]
 
@@ -71,7 +71,7 @@ export default function Projects() {
               {p.description}
             </p>
 
-            {p.link && (
+            {p.link && p.link !== 'case-study' && (
               <a 
                 href={p.link} 
                 target="_blank" 
@@ -80,6 +80,11 @@ export default function Projects() {
               >
                 View Project
               </a>
+            )}
+            {p.link === 'case-study' && (
+              <span className="inline-block mt-auto text-sm font-semibold text-text-muted">
+                Case study on request
+              </span>
             )}
           </motion.div>
         ))}
