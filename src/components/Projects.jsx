@@ -15,9 +15,9 @@ const projects = [
     link: 'https://arunachalamvenkatachalapathy-dev.github.io/netzerocalc-ai/',
   },
   {
-    title: 'Paravanar Governance Board',
-    category: 'Research & Framework',
-    description: 'Scholarly framework proposing tripartite governance for restoring a contaminated watershed. Modelled an Advanced Constructed Wetland.',
+    title: 'Reviving the Paravanar',
+    category: 'STC Season 6 · NIUA–NMCG selected thesis',
+    description: 'A watershed restoration proposal: a Paravanar River Basin Committee, a verifiable water-quality evidence system and a modelled constructed-wetland concept (not on-site remediation) to link pollution control with local accountability.',
     link: 'https://arunachalamvenkatachalapathy-dev.github.io/paravanar/',
   },
   {
