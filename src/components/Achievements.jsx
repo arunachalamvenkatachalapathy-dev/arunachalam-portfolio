@@ -2,9 +2,9 @@ import { motion } from 'framer-motion'
 
 const achievements = [
   {
-    title: 'Selected Post-Graduate Researcher',
-    org: '"Re-Imagining Urban Rivers" Season 6',
-    body: 'National Institute of Urban Affairs (NIUA) & River Cities Alliance, Government of India. Awarded a ₹50,000 competitive research grant with national-level mentorship support.',
+    title: 'Selected postgraduate thesis | STC Season 6',
+    org: 'Re-Imagining Urban Rivers · NIUA + National Mission for Clean Ganga',
+    body: 'National Student Thesis Competition, partnered by the Ministry of Housing and Urban Affairs and the Ministry of Jal Shakti. Selected for the ₹50,000 research scholarship for a Paravanar watershed restoration proposal in Tamil Nadu, connecting industrial water pollution, nature-based treatment and community-led river governance.',
   },
 ]
 
